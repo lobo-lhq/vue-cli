@@ -11,8 +11,12 @@ Vue.use(VueRouter);
 const router = new VueRouter({
   routes:[
     {
-      path:'/index',
-      component:index
+      path     : '/',
+      component: index
+    },
+    {
+      path     : '/index',
+      component: index
     }
   ]
 })
@@ -24,7 +28,7 @@ Vue.config.productionTip = false
 
 new Vue({
   // 选择器
-  el:"#app",
+  el: "#app",
   // 挂载到vue
   router,
   // 渲染 App组件

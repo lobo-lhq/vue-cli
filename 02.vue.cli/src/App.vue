@@ -107,7 +107,7 @@
                             <p class="gray">Copyright © 2009-2018 itcast Corporation,All Rights Reserved.</p>
                         </div>
                         <div class="service">
-                            <p>周一至周日 9:00-24:00</p>
+                            <p>周一至周日 9: 00-24: 00</p>
                             <a href="#">
                                 <i class="iconfont icon-phone"></i>在线客服</a>
                         </div>
@@ -118,10 +118,31 @@
 </template>
 
 <script>
-export default {}; 
+import $ from 'jquery';
+export default {
+    name: '#app'
+}; 
+
+$(document).ready(function() {
+	$("#menu2 li a").wrapInner( '<span class="out"></span>' );
+	$("#menu2 li a").each(function() {
+		$( '<span class="over">' +  $(this).text() + '</span>' ).appendTo( this );
+	});
+
+	$("#menu2 li a").hover(function() {
+		$(".out",	this).stop().animate({'top':	'48px'},	300); // move down - hide
+		$(".over",	this).stop().animate({'top':	'0px'},		300); // move down - show
+
+	}, function() {
+		$(".out",	this).stop().animate({'top':	'0px'},		300); // move up - show
+		$(".over",	this).stop().animate({'top':	'-48px'},	300); // move up - hide
+	});
+
+});
+
 </script>
 
 <style>
   /* 标准的 css中导入其他css的语法 */
-  /* @import url('./assets/statics/site/css/style.css'); */
+   @import url('./assets/statics/lib/hover/css/style.css'); 
 </style>
