@@ -6,7 +6,7 @@
         <div class="head-top">
             <div class="section">
                 <div class="left-box">
-                    <span>黑马买买买</span>
+                    <span>黑科技buy</span>
                     <a target="_blank" href="#"></a>
                     <a target="_blank" href="#"></a>
                 </div>
@@ -118,9 +118,29 @@
 </template>
 
 <script>
+
 import $ from 'jquery';
+import axios from 'axios';
 export default {
-    name: '#app'
+    name: '#app',
+    data: function(){
+        catelist  : [],
+        sliderlist: [],
+        toplist   : []
+    },
+
+    beforeMount() {
+        axios
+        .get('http://47.106.148.205:8899/site/goods/gettopdata/goods')
+        .then((response) => {
+            console.log(response);
+            this.catelist   = response.data.message.catelist;
+            this.sliderlist = response.data.message.sliderlist;
+            this.toplist    = response.data.message.toplist;
+        }).catch((error) => {
+            console.log(error);
+        });
+    },
 }; 
 
 $(document).ready(function() {
